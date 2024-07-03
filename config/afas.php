@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'extra_headers' => [
+        'IntegrationId' => '00000_0000000'
+    ],
 
     // Connections to different AFAS servers
     'connections' => [

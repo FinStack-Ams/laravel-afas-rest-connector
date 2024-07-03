@@ -38,7 +38,8 @@ class AfasClient
         }
 
         return Http::withHeaders([
-            'Authorization' => "AfasToken ".base64_encode($this->connection->getToken())
+            'Authorization' => "AfasToken ".base64_encode($this->connection->getToken()),
+            ...config('afas.extra_headers', [])
         ])->$method($this->connector->getUrl(), $data == [] ? null : $data);
     }
 }
