@@ -37,7 +37,7 @@ class AfasClient
             throw new \Exception("AFAS token not found.");
         }
 
-        return Http::withHeaders([
+        return Http::timeout(config('afas.timeout', 30))->withHeaders([
             'Authorization' => "AfasToken ".base64_encode($this->connection->getToken()),
             ...config('afas.extra_headers', [])
         ])->$method($this->connector->getUrl(), $data == [] ? null : $data);
